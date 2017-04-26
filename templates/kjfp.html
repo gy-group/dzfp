@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>开具发票</title>
+    <link rel="stylesheet" href="../static/public/components/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="../static/public/components/bootstrap/dist/js/bootstrap.min.js" async="async"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<tbody>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center" style="font-family:'思源宋体 CN Light';font-size: 18pt;">增值税普通发票</p>
+                <hr style="border:1px dashed #000; height:1px;width:220px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-left">
+                    <button type="button" class="btn btn-success">
+                         <span class="glyphicon glyphicon-print"></span> 开票 </button>
+                    <button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-film"></span> 保存</button>
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span> 重置</button>
+                </p>
+
+                <p class="text-right">开票日期:2017年04月26日</p>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <td style="text-align: center;vertical-align:middle">购<br>买<br>方</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="gf_mc" class="col-sm-3 control-label">名称:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_mc" placeholder="购方名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_nsrsbh" class="col-sm-3 control-label">纳税人识别号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_nsrsbh" placeholder="纳税人识别号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_dz" class="col-sm-3 control-label">地址、电话:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_dz" placeholder="联系地址">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_khzh" class="col-sm-3 control-label">开户行及账号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_khzh" placeholder="开户行及账号">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="text-align: center;vertical-align:middle">附<br>加<br>信<br>息</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="gf_ywdh" class="col-sm-3 control-label">业务单号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_ywdh" placeholder="业务单号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_lxrmc" class="col-sm-3 control-label">联系人名称:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_lxrmc" placeholder="联系人名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_lxrdh" class="col-sm-3 control-label">联系人电话:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="gf_lxrdh" placeholder="联系人电话">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gf_email" class="col-sm-3 control-label">电子邮件:</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="gf_email" placeholder="电子邮件">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <th></th>
+                                    <th>货物或应税劳务、服务名称</th>
+                                    <th>规格型号</th>
+                                    <th>单位</th>
+                                    <th>数量</th>
+                                    <th>单价</th>
+                                    <th>金额</th>
+                                    <th>税率</th>
+                                    <th>税额</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr class="success">
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr class="info">
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr class="warning">
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr class="danger">
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                     <tr>
+                                        <td style="height: 25px"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center">合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计:</td>
+                                        <td colspan="5" style="text-align: right">¥ 42079.69</td>
+                                        <td colspan="2" style="text-align: right">¥ 1456.89</td>
+                                    </tr>
+                                     <tr>
+                                        <td colspan="2" style="text-align: center">价税合计(大写):</td>
+                                        <td colspan="5" style="text-align: left">肆万叁仟伍佰叁拾陆圆伍角捌分</td>
+                                        <td colspan="2" style="text-align: center"> (小写) &nbsp;&nbsp;¥ 43536.58</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                 <tr>
+                    <td style="text-align: center;vertical-align:middle">销<br>售<br>方</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="xf_mc" class="col-sm-3 control-label">名称:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="xf_mc" placeholder="销售方名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="xf_nsrsbh" class="col-sm-3 control-label">纳税人识别号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="xf_nsrsbh" placeholder="纳税人识别号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="xf_dz" class="col-sm-3 control-label">地址、电话:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="xf_dz" placeholder="联系地址">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="xf_khzh" class="col-sm-3 control-label">开户行及账号:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="xf_khzh" placeholder="开户行及账号">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="text-align: center;vertical-align:middle">备<br>注</td>
+                    <td>
+                        <textarea class="form-control" rows="9" id="bz"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+             <div class="col-md-4">
+                      <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="skr" class="col-sm-3 control-label">收款人:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="skr" placeholder="收款人">
+                                        </div>
+                                    </div>
+                      </form>
+            </div>
+            <div class="col-md-4">
+                      <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="fhr" class="col-sm-3 control-label">复核:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fhr" placeholder="复核人">
+                                        </div>
+                                    </div>
+                      </form>
+            </div>
+            <div class="col-md-4">
+                      <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="kpr" class="col-sm-3 control-label">开票人:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="kpr" placeholder="开票人">
+                                        </div>
+                                    </div>
+                      </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
