@@ -12,3 +12,7 @@ def index():
 @main.route('/home')
 def home():
     return render_template("home.html")
+
+@main.route('/kjfp')
+def kjfp():
+    return render_template("kjfp.html")
