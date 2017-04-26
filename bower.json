@@ -1,0 +1,22 @@
+{
+  "name": "dzfp",
+  "authors": [
+    "lyy <cookiecoke@163.com>"
+  ],
+  "description": "电子发票服务平台",
+  "main": "",
+  "keywords": [
+    "dzfp"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/public/components",
+    "test",
+    "tests"
+  ]
+}
