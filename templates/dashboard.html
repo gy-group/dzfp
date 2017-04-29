@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的桌面</title>
+
+    <link rel="stylesheet" href="../static/public/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+
+    <script src="../static/public/components/jquery/dist/jquery.min.js" async="async"></script>
+    <script type="text/javascript" src="../static/public/components/bootstrap/dist/js/bootstrap.min.js" async="async"></script>
+
+    <script src="../static/js/amcharts/amcharts/amcharts.js"></script>
+    <script src="../static/js/amcharts/amcharts/pie.js"></script>
+    <script src="../static/js/amcharts/amcharts/serial.js"></script>
+    <script src="../static/js/amcharts/amcharts/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="../static/js/amcharts/amcharts/plugins/export/export.css" type="text/css" media="all" />
+    <script src="../static/js/amcharts/amcharts/themes/light.js"></script>
+    <style>
+        #chartdiv{
+          width: 100%;
+          height: 500px;
+        }
+
+        #piechartdiv {
+          width: 100%;
+          height: 500px;
+          font-size: 11px;
+        }
+    .lastBullet {
+      -webkit-animation: am-pulsating 1s ease-out infinite;
+      animation: am-pulsating 1s ease-out infinite;
+    }
+    @-webkit-keyframes am-pulsating {
+      0% {
+        stroke-opacity: 1;
+        stroke-width: 0px;
+      }
+      100% {
+        stroke-opacity: 0;
+        stroke-width: 50px;
+      }
+    }
+    @keyframes am-pulsating {
+      0% {
+        stroke-opacity: 1;
+        stroke-width: 0px;
+      }
+      100% {
+        stroke-opacity: 0;
+        stroke-width: 50px;
+      }
+    }
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+       <h3 class="page-title">
+			发票数据 <small>动态 &amp; 报告</small>
+			</h3>
+        <div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat blue-madison">
+						<div class="visual">
+							<i class="fa fa-comments"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 30000¥
+							</div>
+							<div class="desc">
+								 当天开票量
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						更多 <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat red-intense">
+						<div class="visual">
+							<i class="fa fa-bar-chart-o"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+                                    500000¥
+							</div>
+							<div class="desc">
+								 总开票量
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						更多 <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat green-haze">
+						<div class="visual">
+							<i class="fa fa-shopping-cart"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 50000张
+							</div>
+							<div class="desc">
+								 发票库存
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						 更多<i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat purple-plum">
+						<div class="visual">
+							<i class="fa fa-globe"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								500个
+							</div>
+							<div class="desc">
+								 发票申请
+							</div>
+						</div>
+						<a class="more" href="javascript:;">
+						更多 <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+        <div class="row">
+				<div class="col-md-12 col-sm-12">
+					<!-- BEGIN PORTLET-->
+					<div class="portlet light ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-bar-chart font-green-sharp hide"></i>
+								<span class="caption-subject font-green-sharp bold uppercase">开票走势图</span>
+								<span class="caption-helper">月统计</span>
+							</div>
+							<div class="actions">
+								<div class="btn-group btn-group-devided" data-toggle="buttons">
+									<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+									<input type="radio" name="options" class="toggle" id="option1">图表</label>
+									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+									<input type="radio" name="options" class="toggle" id="option2">数据</label>
+								</div>
+							</div>
+						</div>
+						<div class="portlet-body">
+                            <div id="chartdiv"></div>
+						</div>
+					</div>
+					<!-- END PORTLET-->
+				</div>
+
+			</div>
+            <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="portlet light ">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-bar-chart font-green-sharp hide"></i>
+								<span class="caption-subject font-green-sharp bold uppercase">开票占比（TOP10）</span>
+								<span class="caption-helper">开票点统计</span>
+							</div>
+							<div class="actions">
+								<div class="btn-group btn-group-devided" data-toggle="buttons">
+									<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+									<input type="radio" name="options" class="toggle" id="option1">图表</label>
+									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+									<input type="radio" name="options" class="toggle" id="option2">数据</label>
+								</div>
+							</div>
+						</div>
+						<div class="portlet-body">
+                                <div id="piechartdiv"></div>
+						</div>
+					</div>
+                </div>
+            </div>
+
+    </div>
+<!-- Chart code -->
+<script type="text/javascript">
+var chartData = [{
+  "date": "2017-01",
+  "distance": 50000,
+  "townName": "New York",
+  "townName2": "New York",
+  "townSize": 25,
+  "latitude": 40.71
+}, {
+  "date": "2017-02",
+  "distance": 30000,
+  "townName": "Washington",
+  "townSize": 14,
+  "latitude": 38.89
+}, {
+  "date": "2017-03",
+  "distance": 60000,
+  "townName": "Wilmington",
+  "townSize": 6,
+  "latitude": 34.22
+}, {
+  "date": "2017-04",
+  "distance": 70000,
+  "townName": "Jacksonville",
+  "townSize": 7,
+  "latitude": 30.35
+}, {
+  "date": "2017-05",
+  "distance": 55000,
+  "townName": "Miami",
+  "townName2": "Miami",
+  "townSize": 10,
+  "latitude": 25.83
+}, {
+  "date": "2017-06",
+  "distance": 90000,
+  "townName": "Tallahassee",
+  "townSize": 7,
+  "latitude": 30.46
+}, {
+  "date": "2017-07",
+  "distance": 40000,
+  "townName": "New Orleans",
+  "townSize": 10,
+  "latitude": 29.94
+}, {
+  "date": "2017-08",
+  "distance": 120000,
+  "townName": "Houston",
+  "townName2": "Houston",
+  "townSize": 16,
+  "latitude": 29.76
+}, {
+  "date": "2017-09",
+  "distance": 70000,
+  "townName": "Dalas",
+  "townSize": 17,
+  "latitude": 32.8
+}, {
+  "date": "2017-10",
+  "distance": 80000,
+  "townName": "Oklahoma City",
+  "townSize": 11,
+  "latitude": 35.49
+}, {
+  "date": "2017-11",
+  "distance": 20000,
+  "townName": "Kansas City",
+  "townSize": 10,
+  "latitude": 39.1
+}, {
+  "date": "2017-12",
+  "distance": 10000,
+  "townName": "Denver",
+  "townName2": "Denver",
+  "townSize": 18,
+  "latitude": 39.74,
+    "bulletClass": "lastBullet"
+}
+];
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "serial",
+    "color": "#6c7b88",
+
+  "dataDateFormat": "YYYY-MM",
+  "dataProvider": chartData,
+
+  "addClassNames": true,
+  "startDuration": 1,
+  //"color": "#FFFFFF",
+  "marginLeft": 0,
+
+  "categoryField": "date",
+  "categoryAxis": {
+    "parseDates": true,
+    "minPeriod": "MM",
+    "autoGridCount": true,
+    "gridAlpha": 0.1,
+    "gridColor": "#FFFFFF",
+    "axisColor": "#555555",
+    "dateFormats": [{
+      "period": 'MM',
+      "format": 'MM'
+    }, {
+      "period": 'YYYY',
+      "format": 'YYYY'
+    } ]
+  },
+
+  "valueAxes": [ {
+    "id": "a1",
+    "title": "开票额",
+    "gridAlpha": 0,
+    "axisAlpha": 0
+  }, {
+    "id": "a2",
+    "position": "right",
+    "gridAlpha": 0,
+    "axisAlpha": 0,
+    "labelsEnabled": false
+  }],
+  "graphs": [ {
+    "id": "g1",
+    "valueField": "distance",
+    "title": "开票额",
+    "type": "column",
+    "fillAlphas": 0.7,
+    "valueAxis": "a1",
+    "balloonText": "开票额:[[value]] ¥",
+    "legendValueText": "[[value]] ¥",
+    "legendPeriodValueText": "总数: [[value.sum]] ¥",
+    "lineColor": "#08a3cc",
+    "alphaField": "alpha"
+  }, {
+    "id": "g2",
+    "valueField": "latitude",
+    "classNameField": "bulletClass",
+    "title": "开票数(张)",
+    "type": "line",
+    "valueAxis": "a2",
+    "lineColor": "#786c56",
+    "lineThickness": 1,
+    "legendValueText": "[[value]]张",
+    //"descriptionField": "townName",
+    "bullet": "round",
+    "bulletSizeField": "townSize",
+    "bulletBorderColor": "#02617a",
+    "bulletBorderAlpha": 1,
+    "bulletBorderThickness": 2,
+    "bulletColor": "#89c4f4",
+    //"labelText": "[[townName2]]",
+    "labelPosition": "center",
+    "balloonText": "张数:[[value]]",
+    "showBalloon": true,
+    "animationPlayed": true
+  }],
+
+  "chartCursor": {
+    "zoomable": false,
+    "categoryBalloonDateFormat": "MM",
+    "cursorAlpha": 0,
+    "valueBalloonsEnabled": true,
+      "categoryBalloonColor": "#e26a6a",
+  },
+  "legend": {
+    "bulletType": "round",
+    "equalWidths": false,
+    "valueWidth": 120,
+    "useGraphSettings": true,
+    "color": "#6c7b88"
+  }
+} );
+
+var chart = AmCharts.makeChart("piechartdiv", {
+  "type": "pie",
+  "startDuration": 0,
+   "theme": "light",
+  "addClassNames": true,
+  "legend":{
+   	"position":"right",
+    "marginRight":100,
+    "autoMargins":false
+  },
+  "innerRadius": "30%",
+  "defs": {
+    "filter": [{
+      "id": "shadow",
+      "width": "200%",
+      "height": "200%",
+      "feOffset": {
+        "result": "offOut",
+        "in": "SourceAlpha",
+        "dx": 0,
+        "dy": 0
+      },
+      "feGaussianBlur": {
+        "result": "blurOut",
+        "in": "offOut",
+        "stdDeviation": 5
+      },
+      "feBlend": {
+        "in": "SourceGraphic",
+        "in2": "blurOut",
+        "mode": "normal"
+      }
+    }]
+  },
+  "dataProvider": [{
+    "kpd": "浦东店",
+    "kpje": 501.9
+  }, {
+    "kpd": "徐汇店",
+    "kpje": 301.9
+  }, {
+    "kpd": "长宁店",
+    "kpje": 201.1
+  }, {
+    "kpd": "静安店",
+    "kpje": 165.8
+  }, {
+    "kpd": "黄浦店",
+    "kpje": 139.9
+  }, {
+    "kpd": "虹口店",
+    "kpje": 128.3
+  }, {
+    "kpd": "杨浦店",
+    "kpje": 99
+  }, {
+    "kpd": "松江店",
+    "kpje": 60
+  }, {
+    "kpd": "其他",
+    "kpje": 50
+  }],
+  "valueField": "kpje",
+  "titleField": "kpd"
+
+});
+
+chart.addListener("init", handleInit);
+
+chart.addListener("rollOverSlice", function(e) {
+  handleRollOver(e);
+});
+
+function handleInit(){
+  chart.legend.addListener("rollOverItem", handleRollOver);
+}
+
+function handleRollOver(e){
+  var wedge = e.dataItem.wedge.node;
+  wedge.parentNode.appendChild(wedge);
+}
+
+
+</script>
+</body>
+</html>
