@@ -1,6 +1,5 @@
 from flask import render_template;
 from flask import session,request,abort,Blueprint;
-import os;
 
 
 main =  Blueprint('main',__name__,template_folder='templates')
