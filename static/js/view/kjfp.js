@@ -8,6 +8,7 @@ $(function(){
 
 });
 
+
 //读取缓存表中的开票方信息
 function loadKpfxx(){
       var obj =  localforage.getItem("kpfxx",function(err,value){
@@ -104,8 +105,17 @@ function loadHpxx(){
     });
 }
 
-//获取表单开票数据
-function getKpsj(){
+
+
+
+/*功能按钮处理函数*/
+
+//1.重置事件
+function cz() {
+        location.reload(true);
+}
+//2.保存
+function kpsq(){
     var gf_mc =  $("#gf_mc").val(); //购方名称
     var gf_nsrsbh = $("#gf_nsrsbh").val(); //购方识别号
     var gf_dz =  $("#gf_dz").val(); //购方地址
@@ -113,8 +123,7 @@ function getKpsj(){
     var gf_ywdh = $("#gf_ywdh").val(); //购方业务单号
     var gf_lxrmc = $("#gf_lxrmc").val(); //购方联系人名称
     var gf_lxrdh = $("#gf_lxrdh").val(); //购方联系人电话
-    var gf_email = $("#gf_email").val(); //购方联系人电子邮件
-
+    var gf_email = $("#gf_email").val(); //购方联系人电子邮
     var hwList = []; //货物列表
     /*发票明细*/
     for(var i = 1;i<=6;i++){
@@ -146,5 +155,25 @@ function getKpsj(){
     var fhr = $("#fhr").val(); //复核人
     var kpr = $("#kpr").val(); //开票人
 
-}
+    var kpsj =  {"gfmc":gf_mc,"gf_nsrsbh":gf_nsrsbh,"gf_dz":gf_dz,"gf_khzh":gf_khzh,"gf_ywdh":gf_ywdh,"gf_lxrmc":gf_lxrmc,"gf_lxrdh":gf_lxrdh,"gf_email":gf_email,"hwxx":hwList,"hjje":hjje,"hjse":hjse,"xf_mc":xf_mc,"xf_nsrsbh":xf_nsrsbh,"xf_dz":xf_dz,"xf_khzh":xf_khzh,"bz":bz,"skr":skr,"fhr":fhr,"kpr":kpr};
 
+    $.ajax({
+                type:"post",
+                dataType: "json",
+                url:"/kpsq",
+                data:{fpsj:JSON.stringify(kpsj)},
+                success:function(data,status){
+                       if(data){
+                            $("#myAlert").alert();
+                       }
+                },
+                error:function(){
+                            alert("开票申请失败!");
+                }
+
+
+          });
+
+
+}
+//

@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>开具发票</title>
+    <title>发票开具申请</title>
     <link rel="stylesheet" href="../static/public/components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/public/components/jquery-ui-bootstrap-jquery-ui-bootstrap-57bfc05/css/custom-theme/jquery-ui-1.10.0.custom.css">
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,6 +17,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -31,8 +30,8 @@
                 <p class="text-left">
                     <button type="button" class="btn btn-success">
                          <span class="glyphicon glyphicon-print"></span> 开票 </button>
-                    <button type="button" class="btn btn-info"> <span class="glyphicon glyphicon-film"></span> 保存</button>
-                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span> 重置</button>
+                    <button type="button" class="btn btn-info" onclick="kpsq();"> <span class="glyphicon glyphicon-film"></span> 保存</button>
+                    <button type="button" class="btn btn-warning" onclick="cz();"><span class="glyphicon glyphicon-trash"></span> 重置</button>
                 </p>
 
                 <p class="text-right">开票日期:2017年04月26日</p>
@@ -283,6 +282,12 @@
                       </form>
             </div>
         </div>
+    </div>
+    <div id="myAlert" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">
+            &times;
+        </a>
+        <strong>成功！</strong>开票申请成功。
     </div>
     <script src="../static/public/components/jquery/dist/jquery.min.js"></script>
     <script src="../static/public/components/jquery-ui-bootstrap-jquery-ui-bootstrap-57bfc05/js/jquery-ui-1.9.2.custom.min.js" ></script>
